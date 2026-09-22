@@ -1,0 +1,8 @@
+[
+  { "id": "world-map", "name": "Night map print", "blurb": "A3 giclée print of a satellite image, on matte cotton paper.", "price": 3800, "kind": "print", "imgUrl": "1lfI7wkGWZ4.jpg" },
+  { "id": "azure-sea", "name": "Azure sea mat", "blurb": "900 × 400 mm stitched-edge mat with a non-slip base.", "price": 3200, "kind": "goods", "imgUrl": "6-jTZysYY_U.jpg" },
+  { "id": "wind-tunnel", "name": "Wind tunnel", "blurb": "Twelve printable PDFs covering the space age and use of wind tunnels.", "price": 1200, "kind": "digital", "imgUrl": "b-P6xrDMFSU.jpg" },
+  { "id": "ocean", "name": "Ocean theme pack", "blurb": "Colour schemes for six terminals, drawn from astronomy photographs.", "price": 900, "kind": "digital", "imgUrl": "HWIOLU7_O6w.jpg" },
+  { "id": "man-on-moon", "name": "Enamel pin set", "blurb": "Three hard-enamel pins: a satellite, a padlock and a comet.", "price": 1800, "kind": "goods", "imgUrl": "UeSpvB0Qo88.jpg" },
+  { "id": "space-shuttle", "name": "Web starter kit", "blurb": "My Next.js starting point with auth, theming and a tested deploy pipeline.", "price": 2900, "kind": "digital", "imgUrl": "Ya__WUgeUg.jpg" }
+]
