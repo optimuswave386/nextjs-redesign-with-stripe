@@ -2,7 +2,7 @@ import "server-only";
 import type { Document } from "mongodb";
 import { getDb, hasDb } from "./mongodb";
 import { fallbackProjects, PROJECT_STATUSES, type Project } from "./projects";
-import { fallbackProducts, PRODUCT_KINDS, type Product } from "./products";
+import { fallbackProducts, PRODUCT_KINDS, TAX_CODES, type Product } from "./products";
 
 // Collection names. Change these if your database uses different ones.
 const PROJECTS = "projects";
@@ -46,8 +46,9 @@ export function toProduct(doc: Document): Product | null {
     name: doc.name,
     blurb: isStr(doc.blurb) ? doc.blurb : "",
     price: Math.round(price), // cents
-    kind: PRODUCT_KINDS.includes(doc.kind) ? doc.kind : "goods",
-    imgUrl: doc.imgUrl
+    kind: PRODUCT_KINDS.includes(doc.kind) ? doc.kind : "digital",
+    imgUrl: doc.imgUrl,
+    tax_code: TAX_CODES.includes(doc.tax_code) ? doc.tax.code : "txcd_10103000" //digital only
   };
 }
 

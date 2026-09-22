@@ -8,7 +8,14 @@ export type Product = {
   price: number;
   kind: "print" | "digital" | "goods";
   imgUrl: string;
+  tax_code: "txcd_99999999" | "txcd_10000000" | "txcd_10103000";
 };
+
+// Needed for stripe managed payments for tax purposes
+// txcd_99999999 — General - Tangible Goods, 
+// txcd_10000000 — General - Services, 
+// txcd_10103000 — Digital goods
+export const TAX_CODES: Product["tax_code"][] = ["txcd_99999999", "txcd_10000000", "txcd_10103000"];
 
 export const PRODUCT_KINDS: Product["kind"][] = ["print", "digital", "goods"];
 
