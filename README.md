@@ -3,6 +3,8 @@
 A minimalist Next.js (App Router, TypeScript) site with a NASA Astronomy Picture of the Day hero,
 themes sampled from that photo, a shop with cart and checkout flow, a portfolio, an about page and a help center.
 
+<img width="658" height="427" alt="Screenshot 2026-09-22 at 5 32 03 PM" src="https://github.com/user-attachments/assets/7986b11a-5858-4ccb-8075-ef87f82bb758" />
+
 ## Run it
 
 ```bash
