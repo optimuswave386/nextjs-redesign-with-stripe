@@ -11,7 +11,7 @@ declare global {
   var _mongoClient: Promise<MongoClient> | undefined;
 }
 
-function connect(): Promise<MongoClient> {
+export async function connect(): Promise<MongoClient> {
   const promise = new MongoClient(uri as string, { serverSelectionTimeoutMS: 5000 }).connect();
   // Don't cache a failed connection forever.
   promise.catch(() => {

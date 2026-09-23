@@ -1,48 +1,25 @@
-"use client";
 import Link from "next/link";
-import { useEffect, useState, type FormEvent } from "react";
-import { readOrders, type Order } from "@/lib/orders";
+import { auth } from "@/auth";
+import { connectMongoose } from "@/lib/mongoose";
+import User from "@/models/user";
+import { readOrders } from "@/lib/orders";
 import { formatPrice } from "@/lib/products";
-import { useLocalStorage } from "@/lib/useLocalStorage";
+import { ProfileForm } from "./ProfileForm";
 
-type Profile = {
-  name?: string;
-  email?: string;
-  address?: string;
-  city?: string;
-  postal?: string;
-  country?: string;
-};
+export default async function ProfilePage() {
+  const session = await auth();
+  if (!session?.user) return null; // middleware redirects before this renders
 
-const FIELDS: { name: keyof Profile; label: string; type?: string; autoComplete: string }[] = [
-  { name: "name", label: "Full name", autoComplete: "name" },
-  { name: "email", label: "Email", type: "email", autoComplete: "email" },
-  { name: "address", label: "Street address", autoComplete: "street-address" },
-  { name: "city", label: "City", autoComplete: "address-level2" },
-  { name: "postal", label: "Postal code", autoComplete: "postal-code" },
-  { name: "country", label: "Country", autoComplete: "country-name" },
-];
-
-export default function ProfilePage() {
-  const [profile, setProfile, ready] = useLocalStorage<Profile>("profile-v1", {});
-  const [orders, setOrders] = useState<Order[]>([]);
-  const [saved, setSaved] = useState(false);
-
-  useEffect(() => setOrders(readOrders()), []);
-
-  function onSubmit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    const fd = new FormData(e.currentTarget);
-    setProfile(Object.fromEntries(FIELDS.map((f) => [f.name, String(fd.get(f.name) ?? "").trim()])));
-    setSaved(true);
-  }
+  await connectMongoose();
+  const user = await User.findById(session.user.id, "-passwordHash").lean();
+  const orders = await readOrders();
 
   const initials =
-    (profile.name ?? "")
+    (user?.name ?? "")
       .split(/\s+/)
       .filter(Boolean)
       .slice(0, 2)
-      .map((w) => w[0]?.toUpperCase())
+      .map((w: string) => w[0]?.toUpperCase())
       .join("") || "?";
 
   return (
@@ -52,37 +29,25 @@ export default function ProfilePage() {
           {initials}
         </div>
         <div>
-          <h1 style={{ fontSize: "clamp(2rem, 1rem + 4vw, 3.5rem)" }}>{profile.name || "Your profile"}</h1>
+          <h1 style={{ fontSize: "clamp(2rem, 1rem + 4vw, 3.5rem)" }}>{user?.name || "Your profile"}</h1>
         </div>
       </header>
 
       <div className="two-col">
         <section aria-labelledby="details-title">
           <h2 id="details-title">Your details</h2>
-          {ready && (
-            <form onSubmit={onSubmit} onChange={() => setSaved(false)}>
-              {FIELDS.map((f) => (
-                <div className="field" key={f.name}>
-                  <label htmlFor={`p-${f.name}`}>{f.label}</label>
-                  <input
-                    id={`p-${f.name}`}
-                    name={f.name}
-                    type={f.type ?? "text"}
-                    autoComplete={f.autoComplete}
-                    defaultValue={profile[f.name] ?? ""}
-                  />
-                </div>
-              ))}
-              <button type="submit" className="btn">
-                Save details
-              </button>
-              <p className="form-status" role="status">
-                {saved ? "Saved. Checkout and the help form will use these details." : ""}
-              </p>
-            </form>
-          )}
+          <ProfileForm
+            initial={{
+              name: user?.name ?? "",
+              email: user?.email ?? "",
+              address: user?.address ?? "",
+              city: user?.city ?? "",
+              zipcode: user?.zipcode ?? "",
+              phone: user?.phone ?? "",
+            }}
+          />
           <p className="muted small" style={{ marginTop: 24 }}>
-            Details and orders are stored in this browser only.
+            Your details and orders are saved to your account.
           </p>
         </section>
 

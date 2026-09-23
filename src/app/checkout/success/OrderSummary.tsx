@@ -1,7 +1,8 @@
 "use client";
+
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { readOrders, saveOrder, type Order } from "@/lib/orders";
+import type { Order } from "@/lib/orders";
 import { formatPrice } from "@/lib/products";
 import { useCart } from "@/components/CartProvider";
 
@@ -20,27 +21,41 @@ export function OrderSummary({ sessionId }: { sessionId: string }) {
       setError("We couldn't find that order.");
       return;
     }
-    // Already confirmed this session in this browser (e.g. a page refresh) — just read it back.
-    const existing = readOrders().find((o) => o.stripeSessionId === sessionId);
-    if (existing) {
-      setOrder(existing);
-      setStatus("ok");
-      return;
-    }
     let cancelled = false;
     (async () => {
       try {
+        // Already confirmed this session before (e.g. a page refresh) — just read it back.
+        const existingRes = await fetch(
+          `/api/orders?stripeSessionId=${encodeURIComponent(sessionId)}`
+        );
+        if (existingRes.ok) {
+          const { order: existing } = await existingRes.json();
+          if (existing) {
+            if (cancelled) return;
+            setOrder(existing);
+            setStatus("ok");
+            return;
+          }
+        }
+
         const res = await fetch(`/api/checkout/session?session_id=${encodeURIComponent(sessionId)}`);
         const data = await res.json();
         if (!res.ok) throw new Error(data.error ?? "Could not confirm the order.");
         const confirmed: Order = { ...data.order, stripeSessionId: sessionId };
         if (cancelled) return;
-        saveOrder(confirmed);
+
+        const savedRes = await fetch("/api/orders", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(confirmed),
+        });
+        const saved = savedRes.ok ? (await savedRes.json()).order : confirmed;
+
         if (!cleared.current) {
           cleared.current = true;
           clear();
         }
-        setOrder(confirmed);
+        setOrder(saved);
         setStatus("ok");
       } catch (err) {
         if (cancelled) return;
