@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { site } from "@/lib/site";
+import { DesignNotes } from "@/components/DesignNotes";
 
 export const metadata: Metadata = { title: "About" };
 
@@ -24,6 +25,11 @@ export default function AboutPage() {
             <a href={`mailto:${site.email}`}>{site.email}</a>, or find me on the sites listed on the right.
             If something on this site isn&rsquo;t working, use the <Link href="/help">help center</Link>.
           </p>
+
+          <div className="about-designnotes">
+            <DesignNotes xitemsonly={3} />
+          </div>
+
         </div>
 
         <aside className="facts">

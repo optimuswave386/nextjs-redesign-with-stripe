@@ -965,6 +965,20 @@ a.work-row:hover .work-title {
   border-top: 1px solid var(--line);
 }
 
+/* ---------- About - Design Notes section ---------- */
+.about-designnotes{
+  margin-top: 96px;
+}
+.designnotes {
+  margin-top: 48px;
+}
+.designnotes p {
+  font-size: 1.15rem;
+}
+.note{
+  margin-bottom: 24px;  
+}
+
 /* ---------- Help ---------- */
 .faq {
   border-bottom: 1px solid var(--line);
