@@ -27,7 +27,7 @@ export default function AboutPage() {
           </p>
 
           <div className="about-designnotes">
-            <DesignNotes xitemsonly={3} />
+            <DesignNotes xitemsonly={5} />
           </div>
 
         </div>
