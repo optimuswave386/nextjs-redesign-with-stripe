@@ -27,7 +27,7 @@ export function Footer() {
         </ul>
         <p className="muted small footer-credit">
           Sky photograph from NASA&rsquo;s{" "}
-          <a href="https://apod.nasa.gov/apod/" target="_blank" rel="noreferrer">
+          <a href="https://science.nasa.gov/apod" target="_blank" rel="noreferrer">
             Astronomy Picture of the Day
           </a>
           . <br />Credit belongs to each image&rsquo;s author

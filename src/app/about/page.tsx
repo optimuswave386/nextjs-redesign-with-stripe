@@ -5,6 +5,10 @@ import { DesignNotes } from "@/components/DesignNotes";
 
 export const metadata: Metadata = { title: "About" };
 
+// Nothing on this page is per-request, so Next would build it once and the notes would never change.
+// This re-fetches them from the database at most once an hour.
+export const revalidate = 3600;
+
 export default function AboutPage() {
   return (
     <div className="container">
@@ -27,7 +31,7 @@ export default function AboutPage() {
           </p>
 
           <div className="about-designnotes">
-            <DesignNotes xitemsonly={5} />
+            <DesignNotes limit={5} />
           </div>
 
         </div>

@@ -48,7 +48,7 @@ export function toProduct(doc: Document): Product | null {
     price: Math.round(price), // cents
     kind: PRODUCT_KINDS.includes(doc.kind) ? doc.kind : "digital",
     imgUrl: doc.imgUrl,
-    tax_code: TAX_CODES.includes(doc.tax_code) ? doc.tax.code : "txcd_10103000" //digital only
+    tax_code: TAX_CODES.includes(doc.tax_code) ? doc.tax_code : "txcd_10103000" //digital only
   };
 }
 
