@@ -1,3 +1,5 @@
+
+import Image from 'next/image'
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getProjectForSlug } from "@/lib/data";
@@ -26,7 +28,7 @@ export default async function PortfolioSubpage({params}: PageProps) {
     let project: Project[] | null = null;
     project = await getProject(slug);
     
-    if (!project) {
+    if (!project  || project.length === 0) {
         notFound();
     }
 
@@ -41,6 +43,11 @@ export default async function PortfolioSubpage({params}: PageProps) {
       </header>
       <div style={{ marginBottom: "clamp(56px, 8vw, 112px)" }}>        
         <p>{ project[0].description?.join(" ") }</p>
+        <Image src={`/assets/images/projects/${project[0].image}`} alt={project[0].title} 
+          width={768} height={450} 
+          style={{ maxWidth: "100%", width: "auto", height: "auto", marginTop: "1rem" }}
+          loading="eager"
+        />
       </div>
       </>
       ) : (

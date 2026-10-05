@@ -31,7 +31,7 @@ export default function AboutPage() {
           </p>
 
           <div className="about-designnotes">
-            <DesignNotes limit={5} />
+            <DesignNotes limit={50} />
           </div>
 
         </div>

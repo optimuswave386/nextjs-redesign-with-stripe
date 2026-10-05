@@ -12,7 +12,7 @@ function DynamicImage({ dbFilename, alt }: { dbFilename: string, alt: string }) 
 
   useEffect(() => {
     // Resolve the promise safely inside a standard client side lifecycle
-    import(`@/assets/images/${dbFilename}`)
+    import(`@/assets/images/shop/${dbFilename}`)
       .then((mod) => setImageAsset(mod.default))
       .catch(() => setFailed(true));
   }, [dbFilename]);

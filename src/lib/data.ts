@@ -33,6 +33,7 @@ export function toProject(doc: Document): Project | null {
     status: PROJECT_STATUSES.includes(doc.status) ? doc.status : "Live",
     tags: Array.isArray(doc.tags) ? doc.tags.filter(isStr) : [],
     description: Array.isArray(doc.description) ? doc.description.filter(isStr) : [],
+    image: isStr(doc.image) ? doc.image : "",
     links,
   };
 }

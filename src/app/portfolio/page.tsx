@@ -18,7 +18,7 @@ export default async function PortfolioPage() {
     <div className="container">
       <header className="page-head">
         <h1>Portfolio</h1>
-        <p>What I&rsquo;m building now, and what I&rsquo;ve built before. Newest first.</p>
+        <p>What I&rsquo;m building now, and what I&rsquo;ve built before. Oldest first, newest last.</p>
       </header>
       {projects === null ? (
         <div className="empty">

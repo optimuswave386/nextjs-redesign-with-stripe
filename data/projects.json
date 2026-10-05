@@ -20,7 +20,8 @@
   "description": [
   "The React and Bootstrap site that came before this one: a landing page, a list of learning links and a page of tech-stack notes.",
   "It's archived here for reference. This redesign replaced it."
-  ]
+  ],
+  "image": "personal-site-v1.png"
 },
 {
   "slug": "Analytics",
@@ -52,7 +53,8 @@
     "This repository contains project files and analytical work completed as part of the Google Data Analytics Professional Certificate. The projects are developed and presented using Jupyter Notebook, running locally in a macOS environment, with the source files made available through GitHub.",
     "The analyses demonstrate practical applications of data analytics techniques, including data preparation, cleaning, exploration, visualization, and interpretation. The projects are built primarily with Python and utilize widely adopted data science and analytics libraries, including NumPy, Pandas, Scikit-learn, Matplotlib, and Seaborn.",
     "Together, these projects provide examples of working with real-world datasets and applying Python-based analytical workflows to transform raw data into meaningful insights. The notebooks document the analytical process and provide a reproducible view of the methods, calculations, visualizations, and findings developed throughout the certificate program."
-  ]
+  ],
+  "image": "analytics.png"
 },
 {
   "slug": "Angular",
@@ -83,7 +85,8 @@
     "The frontend is developed with Angular and uses Angular Material to provide a structured, responsive, and modern user interface. Angular services manage communication between the frontend and the backend, retrieving and working with product data exposed through the .NET API.",
     "The backend is implemented as a .NET API, which provides product data to the web application from a Microsoft SQL Server database. The SQL Server instance runs inside a Docker container on a local macOS environment, providing a containerized development setup for the application's data layer.",
     "The project demonstrates a complete application workflow—from the Angular Material-based user interface and frontend services, through the .NET API, to a containerized Microsoft SQL Server database—showing how these technologies can be integrated into a functional web store application."
-  ]
+  ],
+  "image": "angular.png"
 },
 {
   "slug": "Laravel",
@@ -111,7 +114,8 @@
     "This project is a custom-built web application developed from scratch in a macOS development environment using Laravel, PHP, and Blade templates. The application combines server-side Blade rendering with standard JavaScript to create an interactive and functional web experience.",
     "The project integrates several supporting technologies and packages, including Spatie for additional Laravel functionality, Laravel authentication, and Chart.js for data visualization. Flowbite components are also incorporated to provide reusable and responsive interface elements while maintaining a consistent UI throughout the application.",
     "Application data is generated automatically using Laravel database seeders, allowing the development environment to be populated with structured sample data and making the application easier to initialize and demonstrate. The application's functionality, database integration, views, and user interactions were developed from the ground up as part of the project."
-  ]
+  ],
+  "image": "laravel.png"
 },
 {
   "slug": "REST-API",
@@ -145,7 +149,8 @@
     "This project represents my ongoing work and experimentation with building a Spring Boot microservices architecture. The application interface is currently up and running, with additional modifications, refinements, and UI improvements planned as development continues.",
     "The backend is built with Java and Spring Boot, using a distributed microservices approach to separate application functionality into independently managed services. Eureka Server is used for service discovery, while RabbitMQ provides messaging capabilities for communication between services. Keycloak is integrated to support authentication and authorization across the application.",
     "The frontend is developed with React, providing the user interface for interacting with the microservices backend. Development and testing are performed using Eclipse, with the project serving as a hands-on exploration of integrating authentication, service discovery, messaging, and modern frontend technologies into a cohesive application."
-  ]
+  ],
+    "image": "springboot.png"
 },
 {
   "slug": "MERN-stack",
@@ -175,7 +180,8 @@
     "The application includes a login and authentication system that uses authentication tokens and cookies, with user credentials and account information managed through MongoDB. A built-in store provides a selection of products along with a functional shopping cart, demonstrating the integration of frontend interactions with backend services.",
     "The homepage integrates the NASA API to dynamically retrieve an image and display relevant information alongside it. The portfolio section features a horizontal scrolling interface enhanced with animations, providing access to additional projects and applications hosted within GitHub repositories.",
     "The application is built with React and JavaScript, with Node.js and Express providing the backend services. GSAP is used to create the interactive animations and scrolling effects, while HTML and CSS provide the underlying structure and visual styling."
-  ]
+  ],
+  "image": "mernstack.png"
 },
 {
   "slug": "cyber-lab-notes",
@@ -191,6 +197,7 @@
     "This project is a searchable collection of home-lab networking exercises and technical notes, documenting hands-on work with network configuration, traffic analysis, troubleshooting, and security hardening. The notes are designed to capture not only successful configurations, but also the mistakes, unexpected results, and lessons learned throughout the lab process.",
     "The project includes network capture analysis, hardening checklists, configuration exercises, and practical networking scenarios built and tested using Cisco Packet Tracer. Each exercise serves as a record of experimentation and troubleshooting, providing a reference for understanding how network components behave and how configuration changes affect connectivity and security.",
     "The goal of the project is to maintain a practical, searchable knowledge base that reflects the process of learning networking through experimentation—documenting both what worked and what went wrong along the way."
-  ]
+  ],
+  "image": "cyber-lab-notes.png"
 }
 ]
